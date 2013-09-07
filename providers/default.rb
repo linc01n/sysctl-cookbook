@@ -27,7 +27,7 @@ action :save do
   end
 
   file getPath do
-    notifies :run, resources(:execute => "sysctl-p")
+    notifies :run, "execute[sysctl-p]"
     content "#{getVariable} = #{new_resource.value}\n"
     owner 'root'
     group 'root'
